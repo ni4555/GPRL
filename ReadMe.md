@@ -58,7 +58,10 @@ the generated topology file `generated-topology.csv` based on this data will app
 python preprocess.py
 ```
 
-Meanwhile, you can modify the generation range of key attributes such as CPU, memory, bandwidth, etc. by adjusting the parameter settings in lines 173-186 of the script above.
+In this preprocessing setting, we have retained `task_name` for each task, `job_name`, `plan_cpu`, `plan_mem`, 
+`start_time`, `end_time`， And generated bandwidth requirements (`plan_bandwidth`) for each edge according to a uniform distribution.
+Meanwhile, you can modify the generation range of key attributes such as CPU, memory (only if that unit is empty in the dataset), 
+bandwidth (generate for each task), etc. by adjusting the parameter settings in lines 173-186 of the script above.
 And control the number of sampled jobs through line 226, and control or add the task attributes used through line 231.
 
 
