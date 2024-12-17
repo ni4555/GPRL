@@ -142,4 +142,4 @@ The performance on different topologies is shown in the figure below.
 
 More experiment results can be found in our paper.
 
-Feel free to reach out if you have any questions!
+Feel free to reach out if you have any questions! [✉️](guoshuhan@mail.tsinghua.edu.cn)
