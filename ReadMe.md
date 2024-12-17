@@ -119,6 +119,11 @@ calculation process of reinforcement learning rewards in the experiment and the 
 we recommend that you carefully read the `mygym.cc` file and try to make your own custom modifications.
 
 
+#### VNR Setting
+If you want to expand the number of VNF types, you can achieve this by adjusting the `m_n_type_VNF` attribute on line 96 of the `mygym.cc` file.
+
+If you want to filter the DAG graph of VNRs with a specified number of nodes, you can do so by modifying lines 97, 98 of the `mygym.cc` file with `m_n_min_VNF` and `m_n_max_VNF`.
+
 
 ## Results
 
