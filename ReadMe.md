@@ -15,6 +15,43 @@ This repository contains the official implementation of GPRL, as presented in th
     <img src="/pictures/framework.png" alt="HL-GNN" width="60%" height="60%">
 </div>
 
+
+## Data Processing Description
+We use the dataset for the VNE problem from the [Alibaba cluster dataset](https://github.com/alibaba/clusterdata). 
+The dataset is derived from a sampling of a production cluster at Alibaba (4000 devices for 8 days). 
+It records online services (also known as Long-Running Applications, LRA) and batch workloads on each machine in the cluster. 
+The dataset is 270GB in size and contains six files when fully unzipped. 
+We build the VNR graph using the relationship between jobs and tasks, and this part of the information is recorded in the `batch task` file, 
+which records information about the instances in the batch workload, that is, the DAG information of each job. 
+Therefore, we only deal with the `batch_task.csv` file, which is about 800MB in size. 
+In this setting, each job corresponds to multiple tasks, and each task has the requested amount of CPU and memory resources, 
+and the `task_name` defines the orientation relation to the different tasks within the job.
+
+In the construction of VNRs, we use a job to refer to a complete VNR, and the DAG graph is constructed according to the task nodes contained in the job, 
+and the execution order of different tasks within a job constitutes a set of edges. 
+In addition, we kept the original `job_name`, `task_name`, `start_time`, `end_time`, `plan_CPU`, and `plan_mem` in the dataset. 
+The `plan_bandwidth` attribute is generated for it to simulate the demand for bandwidth resources. 
+To simulate different VNFs, we randomly generate the `VNF_type` field for tasks to identify different VNF functions. 
+We screen out the job instances containing 5 to 8 nodes to build the DAG graph for VNR from a large number of job instances. 
+These instances retain the original starting and ending time of the task and the amount of CPU and memory resources occupied (missing values are supplemented according to the uniform distribution). 
+Then we fill the requested bandwidth resources according to the uniform distribution. These characteristics constitute the key parameters of our simulations.
+
+For the underlying physical network, we use different real topologies to complete the construction of different physical networks, 
+including GEANT, Abilene, ChinaNet, and Xspedius. 
+After creating the physical network topology, we set a relatively uniform amount of resources for each node and link, and randomly assign the cost per unit resource usage to each node to distinguish the capabilities of different nodes. 
+In addition, for each node, we also set the carrying capacity of different VNF types for it. 
+In the experiment, we assumed five different VNF types. 
+Thus, for the topology, each node randomly runs a different number and type of VNF.
+
+Attached project introduction: <br>
+the Alibaba Cluster Trace Program is published by Alibaba Group. 
+By providing cluster trace from real production, the program helps the researchers, students and people who are interested in the field to get better understanding of the characteristics of modern internet data centers (IDC's) and the workloads. 
+
+Attached dataset introduction: <br>
+the cluster-trace-v2018 includes about 4000 machines in a period of 8 days. Besides having a larger scaler than trace-v2017, this piece trace also contains the DAG information of our production batch workloads.
+
+
+
 ## Requirements
 - python >= 3.10 <br>
 - [ns-3.39](https://www.nsnam.org/releases/ns-allinone-3.39.tar.bz2) <br>
