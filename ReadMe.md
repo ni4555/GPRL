@@ -17,7 +17,7 @@ This repository contains the official implementation of GPRL, as presented in th
 
 
 ## Data Processing Description
-We use the dataset for the VNE problem from the [Alibaba cluster dataset](https://github.com/alibaba/clusterdata). 
+We use the dataset for the VNE problem from the [Alibaba cluster dataset](https://github.com/alibaba/clusterdata) (cluster-trace-v2018). 
 The dataset is derived from a sampling of a production cluster at Alibaba (4000 devices for 8 days). 
 It records online services (also known as Long-Running Applications, LRA) and batch workloads on each machine in the cluster. 
 The dataset is 270GB in size and contains six files when fully unzipped. 
@@ -74,7 +74,7 @@ pip install -r requirements.txt
 ## Usage
 
 ### Alibaba Cluster Datasets Preprocess
-Our VNR problem is built on the [Alibaba cluster dataset](https://github.com/alibaba/clusterdata), and the experimental setup can be found in the paper.
+Our VNR problem is built on the [Alibaba cluster dataset](https://github.com/alibaba/clusterdata) (cluster-trace-v2018), and the experimental setup can be found in the paper.
 The fully decompressed dataset has a size of 270GB, but since we only used the batch_task file, the size is approximately 800MB.
 After you receive the data file, please place it in the following directory:
 
